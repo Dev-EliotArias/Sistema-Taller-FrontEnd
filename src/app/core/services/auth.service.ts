@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { Console } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,11 @@ export class AuthService {
   }
 
   private storeJwtToken(jwt: string, role: string){
+    if (localStorage.getItem(jwt)?.length !== 0 && localStorage.getItem(role)?.length !== 0) {
+      localStorage.removeItem(jwt);
+      localStorage.removeItem(role);
+    }
+
     localStorage.setItem(this.JWT_TOKEN, jwt);
     localStorage.setItem(this.ROLE, role);
   }

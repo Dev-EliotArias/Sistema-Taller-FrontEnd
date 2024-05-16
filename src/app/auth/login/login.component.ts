@@ -18,6 +18,10 @@ export class LoginComponent {
   router = inject(Router);
   isAuthenticated = false;
 
+
+
+
+
   login(event: Event) {
     event.preventDefault();
     console.log(`Login: ${this.username} / ${this.password}`);
