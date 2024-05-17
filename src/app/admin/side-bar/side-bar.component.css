@@ -1,0 +1,80 @@
+:root {
+  --primario: #273043ff;
+  --secundario: #9197aeff;
+  --terciario: #eff6eeff;
+  --cuaternario: #f02d3aff;
+  --quinario: #dd0426ff;
+  --blanco: #ffffff;
+  --negro: #000000;
+  --fondo: #f8f8f8;
+  --gris: #e2e2e2;
+}
+
+
+
+
+.sideBar {
+  height: 100%;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .empresa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+
+    .empresa__logo {
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      background-color: #ffffff;
+    }
+
+    .empresa__nombre--size {
+      font-size: 40px;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+
+  .navItems {
+    margin-top: 40px;
+    list-style: none;
+
+    .navItem--active {
+      background-color: #9197aeff;
+    }
+
+    .navItem--style {
+      margin: 15px 0;
+      border-radius: 10px;
+
+      &:hover,
+      a:hover {
+        background-color: #dd0426ff;
+        border-radius: 10px;
+      }
+
+      a {
+        display: inline-block;
+        width: 100%;
+        padding: 15px 10px;
+        font-size: 20px;
+        color: #ffffff;
+        text-decoration: none;
+        background-color: transparent;
+      }
+
+      /* i {
+        width: 20px;
+        margin-right: 10px;
+        font-size: 20px;
+        background-color: transparent;
+      } */
+    }
+  }
+}

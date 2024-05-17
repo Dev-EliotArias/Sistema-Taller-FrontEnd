@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './core/services/auth.service';
 import { LoginComponent } from './auth/login/login.component';
+import { SideBarComponent } from './admin/side-bar/side-bar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, RouterOutlet, LoginComponent],
+    CommonModule, RouterOutlet, LoginComponent, SideBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
