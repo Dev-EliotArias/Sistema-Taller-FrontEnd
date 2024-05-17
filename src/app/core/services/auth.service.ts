@@ -41,13 +41,7 @@ export class AuthService {
   }
 
   private storeJwtToken(jwt: string, role: string){
-    if (localStorage.getItem(jwt)?.length !== 0 && localStorage.getItem(role)?.length !== 0) {
-      localStorage.removeItem(jwt);
-      localStorage.removeItem(role);
-    }
-
     localStorage.setItem(this.JWT_TOKEN, jwt);
-    localStorage.setItem(this.ROLE, role);
   }
 
   logout(){

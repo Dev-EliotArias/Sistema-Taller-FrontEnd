@@ -54,7 +54,7 @@
       border-radius: 10px;
 
       &:hover,
-      a:hover {
+      a:hover i{
         background-color: #dd0426ff;
         border-radius: 10px;
       }
@@ -67,6 +67,11 @@
         color: #ffffff;
         text-decoration: none;
         background-color: transparent;
+
+        i{
+          margin-right: 5px;
+        }
+
       }
 
       /* i {
