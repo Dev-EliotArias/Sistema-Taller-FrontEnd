@@ -12,24 +12,24 @@ export class ClienteService {
 
   constructor() { }
 
-  list(){
+  list() {
     return this.http.get<any>(this.apiURL);
   }
 
   get(id: number) {
-    return this.http.get<Cliente>(`${this.apiURL}/?id=${id}`);
+    return this.http.get<Cliente>(`${this.apiURL}/${id}`);
   }
 
   save(cliente: Cliente) {
-    return this.http.post<Cliente>(`${this.apiURL}/`, cliente);
+    return this.http.post<Cliente>(`${this.apiURL}`, cliente);
   }
 
   update(id: number, cliente: Cliente) {
-    return this.http.put<Cliente>(`${this.apiURL}/?id=${id}`, cliente);
+    return this.http.put<Cliente>(`${this.apiURL}/${id}`, cliente);
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.apiURL}/?id=${id}`)
+    return this.http.delete(`${this.apiURL}/${id}`)
   }
 
 }
