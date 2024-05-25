@@ -48,30 +48,31 @@ export class ClientFormComponent {
       this.clienteService.get(parseInt(data.id))
         .subscribe(cliente => {
           this.cliente = cliente;
+          console.log(this.cliente)
           this.form = this.fb.group({
             nombreRazonSocial: [cliente.nombreRazonSocial, [Validators.required]],
             tipoDocumento: [cliente.tipoDocumento, [Validators.required]],
+            tipoCliente: [cliente.tipoCliente, [Validators.required]],
             numeroDoc: [cliente.numeroDoc, [Validators.required]],
             telefono: [cliente.telefono, [Validators.required]],
             correo: [cliente.correo, [Validators.required, Validators.email]],
             direccion: [cliente.direccion, [Validators.required]],
+            tipoPago: [cliente.tipoPago, [Validators.required]],
           })
         })
     } else {
       this.form = this.fb.group({
         nombreRazonSocial: ['', [Validators.required]],
         tipoDocumento: ['DNI', [Validators.required]],
+        tipoCliente: ['', [Validators.required]],
         numeroDoc: ['', [Validators.required]],
         telefono: ['', [Validators.required]],
         correo: ['', [Validators.required, Validators.email]],
         direccion: ['', [Validators.required]],
+        tipoPago: ['', [Validators.required]],
       })
     }
-
   }
-
-
-
   save() {
 
     if (this.form?.invalid) {

@@ -1,0 +1,100 @@
+<h2 mat-dialog-title>Formulario Vehiculos</h2>
+
+
+
+@if(form) {
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-dialog-content>
+    <mat-form-field class="example-form-field">
+      <mat-label>Marca:</mat-label>
+      <input id="marca" matInput type="text" formControlName="marca">
+      @if (form.get('marca')?.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="borrarContenido('marca')">
+        <mat-icon>close</mat-icon>
+      </button>
+      }@if (form.get('marca')?.hasError('required')) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Modelo:</mat-label>
+      <input id="modelo" matInput type="text" formControlName="modelo">
+      @if (form.get('modelo')?.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="borrarContenido('modelo')">
+        <mat-icon>close</mat-icon>
+      </button>
+      }@if (form.get('modelo')?.hasError('required')) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Color:</mat-label>
+      <input id="color" matInput type="text" formControlName="color">
+      @if (form.get('color')?.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="borrarContenido('color')">
+        <mat-icon>close</mat-icon>
+      </button>
+      }@if (form.get('color')?.hasError('required')) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Año:</mat-label>
+      <input id="anio" matInput type="text" formControlName="anio">
+      @if (form.get('anio')?.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="borrarContenido('anio')">
+        <mat-icon>close</mat-icon>
+      </button>
+      }@if (form.get('anio')?.hasError('required')) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Placa:</mat-label>
+      <input id="placa" matInput type="text" formControlName="placa">
+      @if (form.get('placa')?.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="borrarContenido('placa')">
+        <mat-icon>close</mat-icon>
+      </button>
+      }@if (form.get('placa')?.hasError('required')) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Propietario</mat-label>
+      <input type="text" placeholder="Busque Propietario" aria-label="Number" matInput formControlName="propietarioId"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        @for (cliente of clientesSourceFiltered | async; track cliente) {
+        <mat-option [value]="cliente">{{ cliente.nombreRazonSocial }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button class="btn-save" mat-flat-button color="primary">
+      @if (data) {
+      Editar
+      } @else {
+      Registrar
+      }
+    </button>
+  </mat-dialog-actions>
+</form>
+}
+
+

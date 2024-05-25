@@ -24,18 +24,6 @@
       }
     </mat-form-field>
     <mat-divider></mat-divider>
-    <!-- <div class="inputText">
-      <label for="tipoDocumento">Tipo de Documento:
-        @if (form.get('tipoDocumento')?.hasError('required') && form.get('tipoDocumento')?.touched) {
-        <span>(Rellene este campo.)</span>
-        }
-      </label>
-      <select id="tipoDocumento" class="form-control" formControlName="tipoDocumento">
-        <option value="DNI" [selected]="form.get('tipoDocumento')">DNI</option>
-        <option value="RUC" [selected]="form.get('tipoDocumento')">RUC</option>
-        <option value="CE" [selected]="form.get('tipoDocumento')">CE</option>
-      </select>
-    </div> -->
 
     <mat-form-field>
       <mat-label>Tipo de Documento:</mat-label>
@@ -55,18 +43,28 @@
       }
     </mat-form-field>
     <mat-divider></mat-divider>
-    <!-- <div class="inputText">
-      <label for="numeroDoc">Numero de Documento:
-        @if (form.get('numeroDoc')?.hasError('required') && form.get('numeroDoc')?.touched){
-        <span class="invalid-feedback d-block">(Rellene este campo.)</span>
-        }
-      </label>
-      <input id="numeroDoc" type="text" class="form-control" formControlName="numeroDoc">
-    </div> -->
+
+    <mat-form-field>
+      <mat-label>Tipo de Cliente:</mat-label>
+      <mat-select id="tipoCliente" class="form-control" formControlName="tipoCliente">
+        <mat-option value="PERSONA_NATURAL">Cliente Normal</mat-option>
+        <mat-option value="EMPRESA">Persona Natural RUC</mat-option>
+        <mat-option value="CLIENTE_NORMAL">Empresa</mat-option>
+      </mat-select>
+      @if (form.get('tipoCliente')?.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="borrarContenido('tipoCliente')">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+      @if (form.get('tipoDocumento')?.hasError('required')) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-divider></mat-divider>
 
     <mat-form-field class="example-full-width">
       <mat-label>Numero de Documento:</mat-label>
-      <input matInput id="numeroDoc" type="text" class="form-control" formControlName="numeroDoc" maxlength="20" type="number">
+      <input matInput id="numeroDoc" type="text" class="form-control" formControlName="numeroDoc" maxlength="20">
       <mat-hint align="start"><strong>No debe sobrepasar el limite </strong> </mat-hint>
       <mat-hint align="end">{{form.get('numeroDoc')?.value.length}} / 20</mat-hint>
       @if (form.get('numeroDoc')?.value) {
@@ -80,14 +78,6 @@
     </mat-form-field>
 
     <mat-divider></mat-divider>
-    <!-- <div class="inputText">
-      <label for="telefono">Telefono del Cliente:
-        @if (form.get('telefono')?.hasError('required') && form.get('telefono')?.touched) {
-        <span class="invalid-feedback d-block">(Rellene este campo.)</span>
-        }
-      </label>
-      <input id="telefono" type="text" class="form-control" formControlName="telefono">
-    </div> -->
 
     <mat-form-field class="example-full-width">
       <mat-label>Telefono</mat-label>
@@ -99,19 +89,6 @@
       }
     </mat-form-field>
     <mat-divider></mat-divider>
-
-
-    <!-- <div class="inputText">
-      <label for="correo">Correo del Cliente:
-        @if (form.get('correo')?.hasError('required') && form.get('correo')?.touched) {
-        <span class="invalid-feedback d-block">(Rellene este campo.)</span>
-        }
-        @if (form.get('correo')?.hasError('email')) {
-        <span class="invalid-feedback d-block">(El email es invalido.)</span>
-        }
-      </label>
-      <input id="correo" type="text" class="form-control" formControlName="correo">
-    </div> -->
 
     <mat-form-field class="example-full-width">
       <mat-label>Correo</mat-label>
@@ -131,17 +108,6 @@
     </mat-form-field>
     <mat-divider></mat-divider>
 
-
-
-    <!-- <div class="inputText">
-      <label for="name">Direccion del Cliente:
-        @if (form.get('direccion')?.hasError('required') && form.get('direccion')?.touched) {
-        <span class="invalid-feedback d-block">(Rellene este campo.)</span>
-        }
-      </label>
-      <input id="direccion" type="text" class="form-control" formControlName="direccion">
-    </div> -->
-
     <mat-form-field class="example-form-field">
       <mat-label>Dirección:</mat-label>
       <input id="direccion" matInput class="form-control" formControlName="direccion">
@@ -153,6 +119,23 @@
       <mat-error>Este campo es <strong>requerido</strong></mat-error>
       }
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tipo de Pago:</mat-label>
+      <mat-select id="tipoPago" class="form-control" formControlName="tipoPago">
+        <mat-option value="TARJETA">Tarjeta</mat-option>
+        <mat-option value="EFECTIVO">Efectivo</mat-option>
+      </mat-select>
+      @if (form.get('tipoPago')?.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="borrarContenido('tipoPago')">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+      @if (form.get('tipoPago')?.hasError('required')) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-divider></mat-divider>
 
 
 

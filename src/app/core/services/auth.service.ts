@@ -35,6 +35,7 @@ export class AuthService {
 
   private doLoginUser(username: string, token: any, role: any){
     this.loggedUser = username;
+    localStorage.removeItem(this.JWT_TOKEN);
     this.storeJwtToken(token, role);
     this.isAuthenticated.next(true);
   }

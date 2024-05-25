@@ -84,6 +84,7 @@ export class TableClientComponent implements OnInit {
       .subscribe(() => {
         this.list();
       })
+    this.list();
   }
 
   ngAfterViewInit() {
