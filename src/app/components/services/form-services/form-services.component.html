@@ -1,1 +1,55 @@
-<p>form-services works!</p>
+<h2 mat-dialog-title>Formulario Técnicos</h2>
+
+@if (form) {
+<form [formGroup]="form" (ngSubmit)="save()" class="form">
+  <mat-dialog-content class="dialog">
+    <!-- Nombre -->
+    <div class="form__group">
+      <input class="form--input" type="text" id="nombre" formControlName="nombre" placeholder="Nombre" />
+      <label class="label" for="nombre">
+        Nombre*
+      </label>
+      @if (form.get('nombre')?.hasError('required') && form.get('nombre')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- Precio -->
+    <div class="form__group">
+      <input class="form--input" type="number" id="costo" formControlName="costo" placeholder="Costo" />
+      <label class="label" for="costo">
+        Costo*
+      </label>
+      @if (form.get('costo')?.hasError('required') && form.get('costo')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+    <!-- Descripcion -->
+    <div class="form__group">
+      <!-- <input class="form--input" type="number" id="dni" formControlName="dni" placeholder="DNI" /> -->
+      <textarea class="form--input" name="descripcion" id="descripcion" formControlName="descripcion" placeholder="Describa el servicio"></textarea>
+      <label class="label" for="descripcion">
+        Descripcion del servicio*
+      </label>
+      @if (form.get('descripcion')?.hasError('required') && form.get('descripcion')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button class="btn-save" mat-flat-button color="primary">
+      @if (data) {
+      Editar
+      } @else {
+      Registrar
+      }
+    </button>
+  </mat-dialog-actions>
+</form>
+}

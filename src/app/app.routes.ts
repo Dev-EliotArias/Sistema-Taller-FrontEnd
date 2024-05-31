@@ -14,5 +14,5 @@ export const routes: Routes = [
   { path: 'clientes', component: TableClientComponent, canActivate: [authGuard] },
   { path: 'vehiculos', component: TableVehiclesComponent, canActivate: [authGuard] },
   { path: 'tecnicos', component: TableTechniciansComponent, canActivate: [authGuard] },
-  // { path: 'vehiculos', component: TableVehiclesComponent, canActivate: [authGuard] },
+  { path: 'servicios', component: TableServicesComponent, canActivate: [authGuard] },
 ];
