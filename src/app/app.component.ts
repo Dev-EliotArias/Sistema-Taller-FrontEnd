@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './core/services/auth.service';
 import { LoginComponent } from './auth/login/login.component';
 import { SideBarComponent } from './admin/side-bar/side-bar.component';
 
