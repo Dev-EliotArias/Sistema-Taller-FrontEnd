@@ -1,5 +1,4 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { type } from 'os';
 
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
@@ -20,7 +19,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
 function getJwtToken(): string | null {
 
-  if (typeof localStorage !== 'undefined'){
+  if (typeof localStorage !== `undefined`){
     return localStorage.getItem('JWT_TOKEN')
   }
 

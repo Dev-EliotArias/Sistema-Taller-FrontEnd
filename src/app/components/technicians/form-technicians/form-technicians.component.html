@@ -1,0 +1,164 @@
+<h2 mat-dialog-title>Formulario Técnicos</h2>
+
+@if (form) {
+<form [formGroup]="form" (ngSubmit)="save()" class="form">
+  <mat-dialog-content class="dialog">
+    <!-- Nombres -->
+    <div class="form__group">
+      <input class="form--input" type="text" id="nombre" formControlName="nombre" placeholder="Nombres" />
+      <label class="label" for="nombre">
+        Nombres*
+      </label>
+      @if (form.get('nombre')?.hasError('required') && form.get('nombre')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- <div class="form__group">
+      <input autocomplete="off" class="form--input" type="email" id="email" placeholder="Email" />
+      <label class="label" for="email">
+        Email
+      </label>
+      <button class="clear" aria-label="Clear input">
+        <svg viewBox="0 0 16 16" width="12" height="12">
+          <path d="M 1 1 L 15 15 M 1 15 L 15 1" fill="none" stroke-width="2" stroke="currentColor" />
+        </svg>
+      </button>
+    </div> -->
+
+    <!-- Apellidos -->
+    <div class="form__group">
+      <input class="form--input" type="text" id="apellido" formControlName="apellido" placeholder="Apellidos" />
+      <label class="label" for="apellido">
+        Apellidos*
+      </label>
+      @if (form.get('apellido')?.hasError('required') && form.get('apellido')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- DNI -->
+    <div class="form__group">
+      <input class="form--input" type="number" id="dni" formControlName="dni" placeholder="DNI" />
+      <label class="label" for="dni">
+        DNI*
+      </label>
+      @if (form.get('dni')?.hasError('required') && form.get('dni')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+
+    <!-- Fecha Nacimiento -->
+    <div class="form__group">
+      <input class="form--input" type="date" formControlName="fechaNacimiento" placeholder="Fecha de Nacimiento">
+      <label class="label">Fecha de Nacimiento</label>
+      @if (form.get('fechaNacimiento')?.hasError('required') && form.get('fechaNacimiento')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- "sueldo":  -->
+    <div class="form__group">
+      <input class="form--input" type="number" formControlName="sueldo" placeholder="Sueldo">
+      <label class="label">Sueldo*</label>
+      @if (form.get('sueldo')?.hasError('required') && form.get('sueldo')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- "telefono":  -->
+    <div class="form__group">
+      <input class="form--input" type="number" id="telefono" formControlName="telefono" placeholder="Telefono" />
+      <label class="label" for="telefono">
+        Telefono*
+      </label>
+      @if (form.get('telefono')?.hasError('required') && form.get('telefono')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- "direccion":  -->
+    <div class="form__group">
+      <input class="form--input" type="text" id="direccion" formControlName="direccion" placeholder="Dirección" />
+      <label class="label" for="direccion">
+        Dirección*
+      </label>
+      @if (form.get('direccion')?.hasError('required') && form.get('direccion')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- "email":  -->
+    <div class="form__group">
+      <input class="form--input" type="email" id="correo" formControlName="correo" placeholder="Correo" />
+      <label class="label" for="correo">
+        Correo*
+      </label>
+      @if (form.get('correo')?.hasError('required') && form.get('correo')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+      @if (form.get('correo')?.hasError('email')) {
+        <mat-error>Correo <strong>Invalido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- "especialidad":  -->
+    <div class="form__group">
+      <select class="form--input" name="especialidad" id="especialidad" formControlName="especialidad">
+        <option value="" selected disabled>-- Seleccione una especialidad --</option>
+        @for (especialidad of especialidades; track especialidades) {
+          <option value="{{especialidad}}">{{ especialidad }}</option>
+        }
+      </select>
+      @if (form.get('especialidad')?.hasError('required') && form.get('especialidad')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+
+    <!-- "fechaIngreso":  -->
+    <div class="form__group">
+      <input class="form--input" type="date" formControlName="fechaIngreso" placeholder="Fecha de Ingreso">
+      <label class="label">Fecha de Ingreso</label>
+      @if (form.get('fechaIngreso')?.hasError('required') && form.get('fechaIngreso')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- "estado": -->
+    <div class="form__group">
+      <select class="form--input" name="estado" id="estado" formControlName="estado">
+        <option value="" selected disabled>-- Seleccione un estado --</option>
+        @for (estado of estados; track estados) {
+        <option value="{{estado}}">{{ estado }}</option>
+        }
+      </select>
+      @if (form.get('estado')?.hasError('required') && form.get('estado')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="imprimir()">Close</button>
+    <button class="btn-save" mat-flat-button color="primary">
+      @if (data) {
+      Editar
+      } @else {
+      Registrar
+      }
+    </button>
+  </mat-dialog-actions>
+</form>
+}

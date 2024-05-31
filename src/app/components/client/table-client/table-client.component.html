@@ -4,7 +4,7 @@
   </div>
 </header>
 
-<!-- <div class="actions">
+<div class="actions">
 
   <div class="buscador">
     <i class="fa-solid fa-magnifying-glass"></i>
@@ -14,14 +14,10 @@
   <button (click)="openDialog()">
     <i class="fa-solid fa-user-plus"></i>Registrar Cliente
   </button>
-
-</div> -->
+</div>
 
 <div class="container">
   <table mat-table [dataSource]="dataSource" matSort>
-
-    <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
 
     <ng-container matColumnDef="idCliente">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
@@ -62,16 +58,13 @@
       <th mat-header-cell *matHeaderCellDef> Funciones </th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button>
-          <i class="fa-solid fa-eye view"></i>
+          <i class="fa-solid fa-info" style="color: #B197FC;"></i>
         </button>
-        <button mat-icon-button>
-          <i class="fa-solid fa-file-pen edit"></i>
+        <button mat-icon-button (click)="openDialog(element.id)">
+          <i class="fa-regular fa-pen-to-square" style="color: #74C0FC;"></i>
         </button>
-        <button mat-icon-button>
-          <i class="fa-solid fa-trash delete"></i>
-        </button>
-        <button mat-icon-button>
-          <i class="fa-solid fa-ellipsis-vertical options"></i>
+        <button mat-icon-button (click)="deleteClient(element.id)">
+          <i class="fa-solid fa-minus" style="color: #f02d3aff;"></i>
         </button>
       </td>
     </ng-container>

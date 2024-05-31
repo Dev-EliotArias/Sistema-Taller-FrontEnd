@@ -1,3 +1,4 @@
+
 export interface Vehiculo {
   id: number;
   marca: string;
@@ -5,4 +6,5 @@ export interface Vehiculo {
   color: string;
   anio: string;
   placa: string;
+  propietarioId: number
 }

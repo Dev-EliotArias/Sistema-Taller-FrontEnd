@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Cliente } from '../../../core/models/Cliente';
-
+import { ClientFormComponent } from '../client-form/client-form.component';
 @Component({
   selector: 'app-table-client',
   standalone: true,
@@ -14,12 +14,12 @@ import { Cliente } from '../../../core/models/Cliente';
     MatTableModule,
     MatInputModule,
     MatFormFieldModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   templateUrl: './table-client.component.html',
   styleUrl: '../../../shared/styles/tables.css'
 })
-export class TableClientComponent implements OnInit{
+export class TableClientComponent implements OnInit {
 
   private clienteService = inject(ClienteService);
   clientes: Cliente[] = []
@@ -48,32 +48,32 @@ export class TableClientComponent implements OnInit{
       })
   }
 
-  // openDialog(id?: number): void {
-  //   let dialogRef: MatDialogRef<ClienteFormComponent>;
+  openDialog(id?: number): void {
+    let dialogRef: MatDialogRef<ClientFormComponent>;
 
-  //   if (id) {
-  //     dialogRef = this.dialog.open(ClienteFormComponent, {
-  //       width: "500px",
-  //       data: {
-  //         idCliente: id
-  //       },
-  //       enterAnimationDuration: 700,
-  //       exitAnimationDuration: 500
-  //     });
-  //   } else {
-  //     dialogRef = this.dialog.open(ClienteFormComponent, {
-  //       width: "500px",
-  //       enterAnimationDuration: 700,
-  //       exitAnimationDuration: 500
-  //     });
-  //   }
+    if (id) {
+      dialogRef = this.dialog.open(ClientFormComponent, {
+        width: "500px",
+        data: {
+          id: id
+        },
+        enterAnimationDuration: 700,
+        exitAnimationDuration: 500
+      });
+    } else {
+      dialogRef = this.dialog.open(ClientFormComponent, {
+        width: "500px",
+        enterAnimationDuration: 700,
+        exitAnimationDuration: 500
+      });
+    }
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     console.log(result);
-  //     this.list();
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      this.list();
+    });
+  }
 
   viewClient(id: any) {
     // code to view client details
@@ -84,10 +84,7 @@ export class TableClientComponent implements OnInit{
       .subscribe(() => {
         this.list();
       })
-  }
-
-  optionsClient() {
-    // code to options client
+    this.list();
   }
 
   ngAfterViewInit() {
@@ -95,6 +92,4 @@ export class TableClientComponent implements OnInit{
       this.dataSource.paginator = this.paginator;
     }
   }
-
-
 }

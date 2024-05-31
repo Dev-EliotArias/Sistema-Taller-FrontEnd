@@ -13,9 +13,9 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state) =
     return false;
   }
 
-  if (route.routeConfig?.path !== 'dashboard' && route.routeConfig?.path !== '') {
-    router.navigate(['/dashboard']);
-  }
+  // if (route.routeConfig?.path !== 'dashboard' && route.routeConfig?.path !== '') {
+  //   router.navigate(['/dashboard']);
+  // }
 
   return true;
 };
