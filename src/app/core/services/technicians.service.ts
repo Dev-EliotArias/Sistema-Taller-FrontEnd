@@ -17,6 +17,10 @@ export class TechniciansService {
     return this.http.get<Technician[]>(this.apiURL);
   }
 
+  listActive(): Observable<Technician[]> {
+    return this.http.get<Technician[]>(`${this.apiURL}/active`);
+  }
+
   get(id: number) {
     return this.http.get<Technician>(`${this.apiURL}/${id}`);
   }

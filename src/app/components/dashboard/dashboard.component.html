@@ -1,2 +1,58 @@
-<h1>Clientes Registrados el ultimo año</h1>
-<div id="chart-container" echarts [options]="option"></div>
+<!-- <h1>Dashboard</h1>
+<h2>Estadisticas generales</h2>
+<div>
+  <h3>Clientes</h3>
+  <p>Total: </p>
+</div>
+<div id="chart-container" echarts [options]="option"></div> -->
+<div class="container">
+  <div class="header">
+    <h1>Dashboard</h1>
+  </div>
+  <div class="stats">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Clientes Registrados este mes</h5>
+        <p class="card-text">30</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Vehiculos Registrados este mes</h5>
+        <p class="card-text">35</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Tecnicos Activos</h5>
+        <p class="card-text">7</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Ordenes de Trabajo en Proceso</h5>
+        <p class="card-text">6</p>
+      </div>
+    </div>
+  </div>
+  <div class="charts">
+    <div class="chart card">
+      <div class="card-body">
+        <h5 class="card-title">Clientes Registrados en ultimo año</h5>
+        <div id="chart-container" echarts [options]="option"></div>
+      </div>
+    </div>
+    <div class="chart card">
+      <div class="card-body">
+        <h5 class="card-title">Servicios mas ofrecidos</h5>
+        <div id="chart-container" echarts [options]="pie"></div>
+      </div>
+    </div>
+    <div class="chart card">
+      <div class="card-body">
+        <h5 class="card-title">Ingresos Ultimo año</h5>
+        <div id="chart-container" echarts [options]="line"></div>
+      </div>
+    </div>
+  </div>
+</div>

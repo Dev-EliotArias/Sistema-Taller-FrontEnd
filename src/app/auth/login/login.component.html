@@ -1,13 +1,17 @@
-<h1>Login</h1>
+<div class="containerLogin">
+  <h1>Ingreso</h1>
 
-<form (submit)="login($event)">
-  <div>
-    <input type="text" name="email" placeholder="Email" [(ngModel)]="username" />
-  </div>
-  <div>
-    <input type="password" name="password" placeholder="Password" [(ngModel)]="password" />
-  </div>
-
-  <button>Login</button>
-</form>
-
+  <form (submit)="login($event)">
+    <div class="form__group">
+      <input class="form--input" type="email" name="username" [(ngModel)]="username" placeholder="Nombre Usuario*">
+      <label class="label" >Nombre Usuario*</label>
+    </div>
+    <div class="form__divider"></div>
+    <div class="form__group">
+      <input class="form--input" type="password" name="password" placeholder="Password" [(ngModel)]="password" />
+      <label class="label">Contraseña*</label>
+    </div>
+    <div class="form__divider"></div>
+    <button class="button-41">Ingresar</button>
+  </form>
+</div>

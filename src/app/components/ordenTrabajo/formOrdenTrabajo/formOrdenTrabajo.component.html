@@ -1,0 +1,136 @@
+<h2 mat-dialog-title>Formulario Orden de Trabajo</h2>
+
+@if (form) {
+<form [formGroup]="form" (ngSubmit)="save()" class="form">
+  <mat-dialog-content class="dialog">
+    <!-- Fecha Ingreso -->
+    <div class="form__group">
+      <input class="form--input" type="date" formControlName="fechaIngreso" placeholder="Fecha de Ingreso*">
+      <label class="label">Fecha de Ingreso*</label>
+      @if (form.get('fechaIngreso')?.hasError('required') && form.get('fechaIngreso')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- Fecha Salida -->
+    <div class="form__group">
+      <input class="form--input" type="date" formControlName="fechaSalida" placeholder="Fecha de Salida*">
+      <label class="label">Fecha de Salida*</label>
+      @if (form.get('fechaSalida')?.hasError('required') && form.get('fechaSalida')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- Servicios -->
+    <div class="form__group">
+    <mat-form-field>
+      <mat-label>Servicios</mat-label>
+      <mat-select formControlName="serviciosId" multiple>
+        <mat-select-trigger>
+          {{ form.get('serviciosId')?.value?.length ? form.get('serviciosId')?.value.length + ' seleccionados' : 'Selecciona servicios' }}
+          <!-- {{form.get('serviciosId')?.value?.[0] || ''}}
+          @if ((form.get('serviciosId')?.value?.length || 0) > 1) {
+          <span class="example-additional-selection">
+            (+{{(form.get('serviciosId')?.value?.length || 0) - 1}} {{form.get('serviciosId')?.value?.length === 2 ? 'Otro' : 'Otros'}})
+          </span>
+          } -->
+        </mat-select-trigger>
+        @for (servicio of servicios; track servicio) {
+        <mat-option [value]="servicio.id">{{servicio.nombre}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- "Costo Total":  -->
+    <div class="form__group">
+      <input class="form--input" type="number" id="costoTotal" formControlName="costoTotal" placeholder="Costo Total*" />
+      <label class="label" for="costoTotal">
+        Costo Total*
+      </label>
+      @if (form.get('costoTotal')?.hasError('required') && form.get('costoTotal')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- Descripcion -->
+    <div class="form__group">
+      <!-- <input class="form--input" type="number" id="dni" formControlName="dni" placeholder="DNI" /> -->
+      <textarea class="form--input" name="comentario" id="comentario" formControlName="comentario"
+        placeholder="Comentarios"></textarea>
+      <label class="label" for="comentario">
+        Comentarios *
+      </label>
+      @if (form.get('comentario')?.hasError('required') && form.get('comentario')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- "estado": -->
+    <div class="form__group">
+      <label class="" for="estado">Estado*</label>
+      <select class="form--input" name="estado" id="estado" formControlName="estado">
+        <option value="" selected disabled>-- Seleccione un estado --</option>
+        @for (estado of estados; track estados) {
+        <option value="{{estado}}">{{ estado }}</option>
+        }
+      </select>
+      @if (form.get('estado')?.hasError('required') && form.get('estado')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
+
+    <!-- Autocomplete para Vehículo -->
+    <div class="form__group">
+      <mat-form-field>
+        <input matInput type="text" formControlName="vehiculoId" [matAutocomplete]="autoVehiculo" placeholder="Vehículo*">
+        <mat-autocomplete #autoVehiculo="matAutocomplete" [displayWith]="displayFnVehiculo">
+          <mat-option *ngFor="let vehiculo of vehiculosParaFiltrar | async" [value]="vehiculo">
+            {{ vehiculo.marca }} {{ vehiculo.modelo }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <!-- <label class="label">Vehículo*</label> -->
+      <mat-error *ngIf="form.get('vehiculoId')?.hasError('required') && form.get('vehiculoId')?.touched">
+        Este campo es <strong>requerido</strong>
+      </mat-error>
+    </div>
+    <div class="form__divider"></div>
+
+    <!-- Autocomplete para Técnico -->
+    <div class="form__group">
+      <mat-form-field>
+        <input matInput type="text" formControlName="tecnicoId" [matAutocomplete]="autoTecnico" placeholder="Técnico*">
+        <mat-autocomplete #autoTecnico="matAutocomplete" [displayWith]="displayFnTecnico">
+          <mat-option *ngFor="let tecnico of tecnicosParaFiltrar | async" [value]="tecnico">
+            {{ tecnico.nombre }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <!-- <label class="label">Técnico*</label> -->
+      <mat-error *ngIf="form.get('tecnicoId')?.hasError('required') && form.get('tecnicoId')?.touched">
+        Este campo es <strong>requerido</strong>
+      </mat-error>
+    </div>
+    <div class="form__divider"></div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button class="btn-save" mat-flat-button color="primary">
+      @if (data) {
+      Editar
+      } @else {
+      Registrar
+      }
+    </button>
+  </mat-dialog-actions>
+</form>
+}

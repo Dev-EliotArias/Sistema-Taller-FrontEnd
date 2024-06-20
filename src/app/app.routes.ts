@@ -6,6 +6,7 @@ import { TableClientComponent } from './components/client/table-client/table-cli
 import { TableVehiclesComponent } from './components/vehicles/table-vehicles/table-vehicles.component';
 import { TableServicesComponent } from './components/services/table-services/table-services.component';
 import { TableTechniciansComponent } from './components/technicians/table-technicians/table-technicians.component';
+import { TableOrdenTrabajoComponent } from './components/ordenTrabajo/tableOrdenTrabajo/tableOrdenTrabajo.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -15,4 +16,7 @@ export const routes: Routes = [
   { path: 'vehiculos', component: TableVehiclesComponent, canActivate: [authGuard] },
   { path: 'tecnicos', component: TableTechniciansComponent, canActivate: [authGuard] },
   { path: 'servicios', component: TableServicesComponent, canActivate: [authGuard] },
+  { path: 'ordenes', component: TableOrdenTrabajoComponent, canActivate: [authGuard] },
+
 ];
+

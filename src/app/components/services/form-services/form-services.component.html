@@ -26,10 +26,25 @@
       }
     </div>
     <div class="form__divider"></div>
+
+    <!-- Precio -->
+    <div class="form__group">
+      <input class="form--input" type="number" id="tiempoEstimado" formControlName="tiempoEstimado"
+        placeholder="Tiempo Estimado (m)" />
+      <label class="label" for="tiempoEstimado">
+        Tiempo Estimado (m)*
+      </label>
+      @if (form.get('tiempoEstimado')?.hasError('required') && form.get('tiempoEstimado')?.touched) {
+      <mat-error>Este campo es <strong>requerido</strong></mat-error>
+      }
+    </div>
+    <div class="form__divider"></div>
+
     <!-- Descripcion -->
     <div class="form__group">
       <!-- <input class="form--input" type="number" id="dni" formControlName="dni" placeholder="DNI" /> -->
-      <textarea class="form--input" name="descripcion" id="descripcion" formControlName="descripcion" placeholder="Describa el servicio"></textarea>
+      <textarea class="form--input" name="descripcion" id="descripcion" formControlName="descripcion"
+        placeholder="Describa el servicio"></textarea>
       <label class="label" for="descripcion">
         Descripcion del servicio*
       </label>

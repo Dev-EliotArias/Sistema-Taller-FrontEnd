@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, Inject, OnInit, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { ClientFormComponent } from '../../client/client-form/client-form.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -55,61 +53,19 @@ export class FormVehiclesComponent implements OnInit, AfterViewInit {
   form?: FormGroup;
   vehicle?: Vehiculo;
   constructor(
-    public dialogRef: MatDialogRef<ClientFormComponent>,
+    public dialogRef: MatDialogRef<FormVehiclesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
     this.iniciarForm(data);
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     // this.generarAutocomplete();
   }
 
   ngAfterViewInit(): void {
     this.generarAutocomplete();
   }
-
-
-
-  // private iniciarForm(data: any) {
-  //   if (data) {
-  //     this.vehicleService.get(data.id).subscribe(vehicle => {
-  //       this.vehicle = vehicle;
-
-  //       this.clienteService.get(vehicle.propietarioId).subscribe(cliente => {
-  //         console.log(cliente)
-  //         console.log(this.clienteCalled = cliente)
-
-
-  //       this.form = this.formGroup.group({
-  //         marca: [[vehicle.marca], [Validators.required]],
-  //         modelo: [[vehicle.modelo], [Validators.required]],
-  //         color: [[vehicle.color], [Validators.required]],
-  //         anio: [[vehicle.anio], [Validators.required]],
-  //         placa: [[vehicle.placa], [Validators.required]],
-  //         propietario: [[this.clienteCalled?.nombreRazonSocial], Validators.required]
-  //       })
-  //       this.generarAutocomplete();
-  //       })
-  //     })
-
-
-  //   } else {
-  //     console.log("Form data is empty")
-  //     this.form = this.formGroup.group({
-  //       marca: ['', [Validators.required]],
-  //       modelo: ['', [Validators.required]],
-  //       color: ['', [Validators.required]],
-  //       anio: ['', [Validators.required]],
-  //       placa: ['', [Validators.required]],
-  //       propietario: [null, [Validators.required]]
-  //     })
-
-  //   }
-  // }
 
   private iniciarForm(data: any) {
     if (data) {

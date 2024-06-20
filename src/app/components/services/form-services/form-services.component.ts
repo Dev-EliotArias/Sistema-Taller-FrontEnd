@@ -74,10 +74,10 @@ export class FormServicesComponent {
     let request: Observable<TechService>;
 
     if (this.service) {
-      console.log('Updating Techi:', serviceForm);
+      console.log('Actualizando Servicios:', serviceForm);
       request = this.techServices.update(this.service.id, serviceForm);
     } else {
-      console.log('Saving new Techi:', serviceForm);
+      console.log('Guardando nuevos servicios:', serviceForm);
       request = this.techServices.save(serviceForm);
     }
     request.subscribe({
